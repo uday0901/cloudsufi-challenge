@@ -1,4 +1,4 @@
-import { waitForDebugger } from "inspector";
+import by from "selenium-webdriver/lib/by";
 import { until, WebElement } from "./../../node_modules/selenium-webdriver"; //../../.. /node_modules/@types/selenium-webdriver
 
 export class WebActions{
@@ -18,6 +18,14 @@ export class WebActions{
         until.elementLocated(element.findElement);
         return element.getText().toString();
     }
+
+    selectByValue(element: WebElement, value: string): void{
+       element.findElement(by.xpath(`//option[@value='`+value+`']`)).click();
+    }
+
+    selectByIndex(element: WebElement, index: Number): void{
+        element.findElement(by.xpath(`//option[`+index+`]`)).click();
+     }
 
 
 }
